@@ -1,0 +1,87 @@
+
+.logiExportButton {
+	cursor: pointer; 
+	font-family: Arial, Helvetica;
+	font-size: 16px;
+	background: #fff;
+	color: #000;
+	display: inline;
+	text-decoration: none;
+	line-height: 17px;
+	border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    height: calc(100% - 6px);
+    width: calc(100% - 6px);
+    margin: 3px;
+}
+
+
+.normal-border {
+  --borderWidth: 3px;
+  position: relative;
+  border-radius: var(--borderWidth);
+}
+.normal-border:after {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: #6fba82;
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  background-size: 300% 300%;
+}
+
+
+.gradient-border {
+  --borderWidth: 3px;
+  position: relative;
+  border-radius: var(--borderWidth);
+  cursor: wait; 
+}
+.gradient-border:after {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  -webkit-animation: animatedgradient 1s ease alternate infinite;
+          animation: animatedgradient 1s ease alternate infinite;
+  background-size: 300% 300%;
+}
+
+
+@-webkit-keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+@keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+

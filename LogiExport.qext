@@ -1,0 +1,16 @@
+{
+    "name": "LogiExport",
+    "description": "Advanced Export to Excel",
+    "type": "visualization",
+    "version": "2.2.0",
+    "icon": "high-resolution",
+    "author": "Yossi Rosset @ Logical BI",
+    "homepage": "www.logsys.co.il",
+    "keywords": "qlik-sense, visualization, export, excel, formatting",
+    "preview": "preview.png",
+    "license": "All Copyrights reserved to Logical BI",
+    "repository": "",
+    "dependencies": {
+        "qlik-sense": ">=3.0.x"
+    }
+}
