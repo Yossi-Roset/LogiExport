@@ -9,5 +9,6 @@ Use your existing file as a template.
 Distribution ready file – no macros and security issues.
 Data context included – embed your selections, variables etc. in the file.
 
+<img src='https://logiexport.logsys.co.il/wp-content/uploads/2021/01/logiexport2.gif' alt='LogiExport Demo' />
 Documentation: https://logiexport.logsys.co.il/documentation/
 
