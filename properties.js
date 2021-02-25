@@ -1,4 +1,4 @@
-﻿define(["underscore", "ng!$q", "ng!$http","qlik","qvangular"], function(_, $q, $http, qlik, qv) {
+define(["underscore", "ng!$q", "ng!$http","qlik","qvangular"], function(_, $q, $http, qlik, qv) {
     "use strict";
 	
 	return {
@@ -33,6 +33,35 @@
                                 type: "string",
                                 expression: "optional",
 								defaultValue: "Export"
+                            },
+							buttonClass: {
+                                ref: "props.buttonClass",
+                                label: "Button Style",
+                                type: "string",
+								component: "dropdown",
+                                expression: "optional",
+								defaultValue: "lui-button--info",
+								options: [{
+									value: "",
+									label: "Plain"
+								}, {
+									value: "lui-button--info",
+									label: "Info"
+								}, {
+									value: "lui-button--gradient",
+									label: "Gradient"
+								}, {
+									value: "lui-button--danger",
+									label: "Danger"
+								}, {
+									value: "lui-button--warning",
+									label: "Warning"
+								}, {
+									value: "lui-button--success",
+									label: "Success"
+								}
+							
+							],
                             },
 							useTemplate: {
 								type: "boolean",
@@ -73,7 +102,7 @@
 								},
 								action: function(data){
 									//add your button action here
-									upLogiExport(data);
+									upLogiExport(data, qlik);
 								}
 							},
 							downloadTemplate: {
@@ -84,7 +113,7 @@
 								},
 								action: function(data){
 									//add your button action here
-									downLogiExport(data);
+									downLogiExport(data, qlik);
 								}
 							},
 							pivotToTable: {
@@ -535,9 +564,9 @@
                                 type: "string",
 								expression: "optional"
                             },
-		            manipulteJSBeforeStyle : {
+							manipulteJSBeforeStyle : {
                                 ref: "props.manipulteJSBeforeStyle",
-                                label: "API Before Styling⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n Customize your export using Excel JS API Before Styling is applied, for example \r\n=\'(\"Total Individual Claims\").range(15, 1, 15, 1).value(\"$(=GetFieldSelections([Vehicle Make])));\'\" \r\nsee snippets and examples in our website - https://logiexport.logsys.co.il/documentation",
+                                label: "API Before Styling⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n Customize your export using Excel JS API, for example \r\n=\'(\"Total Individual Claims\").range(15, 1, 15, 1).value(\"$(=GetFieldSelections([Vehicle Make])));\'\" \r\nsee snippets and examples in our website - https://logiexport.logsys.co.il/documentation",
                                 type: "string",
 								expression: "optional"
                             },
