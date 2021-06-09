@@ -4,7 +4,7 @@ LogiExport is a Qlik Sense extension easily added into existing dashboards, savi
 New Features in LogiExport 5.0!<br>
 ⚡Multiple Visualizations Export, Split to Sheets or to Files.<br>
 ⚡Cycle Dimension Export, Split to Sheets or to Files.<br>
-⚡Full suppport in Pivot Tables including keeping the original formatting.<br>
+⚡Full support in Pivot Tables including keeping the original formatting.<br>
 ⚡Export Links as Actual hyperlinks in Excel.<br>
 
 Save time on Excel labor – the file is exported exactly as you like it.
