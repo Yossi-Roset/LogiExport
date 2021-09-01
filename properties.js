@@ -25,7 +25,7 @@ define(["underscore", "ng!$q", "ng!$http","qlik","qvangular"], function(_, $q, $
 								label: "Keep original formatting⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\nKeeps the coloring and the links from the Table / Pivot",
 								ref: "props.keepOriginalColors",
 								defaultValue: false,
-								show: true
+								show: function (e) {return (e.props.fileFormat || 'XLSX') == 'XLSX';}
 							},
 							exportObjId : {
                                 ref: "props.exportObjId",
@@ -40,7 +40,8 @@ define(["underscore", "ng!$q", "ng!$http","qlik","qvangular"], function(_, $q, $
 								type: "boolean",
 								label: "Design by Template File⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\nUse your existing Pre-designed Excel file as a Template,\r\nUpload the xlsx file once, and when the user clicks the button, the data will be exported using the Template\r\n(The xlsx File is saved in App Content)\r\nP.S. Using this option disables some of the Extension functionality, since it can be easily done in the Template",
 								ref: "props.useTemplate",
-								defaultValue: false				
+								defaultValue: false,
+								show: function (e) {return (e.props.fileFormat || 'XLSX') == 'XLSX';}			
 							},
 							dataAddress: {
 								type: "string",
@@ -48,7 +49,7 @@ define(["underscore", "ng!$q", "ng!$http","qlik","qvangular"], function(_, $q, $
 								label: "Data Location Cell⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\nSets the location in the template where the Data will be inserted,\r\nUse a Valid Excel Address, for Example 'Sheet1!A2'",
 								expression: "optional",
 								show: function(e) {
-									return e.props.useTemplate && !e.props.multiObjects;
+									return e.props.useTemplate && !e.props.multiObjects && (e.props.fileFormat || 'XLSX') == 'XLSX';
 								}
 							}, 
 							selAddress: {
@@ -57,14 +58,14 @@ define(["underscore", "ng!$q", "ng!$http","qlik","qvangular"], function(_, $q, $
 								label: "Selections Location Cell⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\nSets the location in the template where the Selections will be inserted,\r\nUse a Valid Excel Address, for Example 'Sheet1!A1'",
 								expression: "optional",
 								show: function(e) {
-									return e.props.useTemplate && !e.props.multiObjects;
+									return e.props.useTemplate && !e.props.multiObjects && (e.props.fileFormat || 'XLSX') == 'XLSX';
 								}
 							},
 							uploadTemplate: {
 								label: "Save the Template",
 								component: "uplButton",
 								show: function(e) {
-									return e.props.useTemplate;
+									return e.props.useTemplate && (e.props.fileFormat || 'XLSX') == 'XLSX';
 								},
 								action: function(data){
 									upLogiExport(data, qlik);
@@ -74,7 +75,7 @@ define(["underscore", "ng!$q", "ng!$http","qlik","qvangular"], function(_, $q, $
 								label: "Get current Template",
 								component: "button",
 								show: function(e) {
-									return e.props.useTemplate;
+									return e.props.useTemplate && (e.props.fileFormat || 'XLSX') == 'XLSX';
 								},
 								action: function(data){
 									downLogiExport(data, qlik);
@@ -84,11 +85,28 @@ define(["underscore", "ng!$q", "ng!$http","qlik","qvangular"], function(_, $q, $
                                 ref: "props.exportFileName",
                                 label: "File name (optional) ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\nSets the file Name for the downloaded file, If not set the File name will be the Visualization Title\r\n P.S. Ignored when exporting multiple files",
                                 type: "string",
-                                expression: "optional",
-								show: function(e) {
-									return e.props.cycleTo == 'Sheets';
-								}
-                            }
+                                expression: "optional"
+                            },
+							fileFormat: {
+                                ref: "props.fileFormat",
+                                label: "File Format",
+                                type: "string",
+								component: "dropdown",
+								defaultValue: "XLSX",
+								options: [{
+									value: "XLSX",
+									label: "Excel (xlsx)"
+									}, {
+									value: "CSV_C",
+									label: "CSV (Comma seperator)"
+									}, {
+									value: "CSV_T",
+									label: "CSV (Tab seperator)"
+									}
+								]
+							}
+							
+							
                         }
                     },
 					settings: {
@@ -161,19 +179,23 @@ define(["underscore", "ng!$q", "ng!$http","qlik","qvangular"], function(_, $q, $
 										ref: "props.ObjSheetName",
 										label: "Sheet \\ File Name ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ \r\nSet the Sheet Name for this Object, if you choose Split to='Files' it will be The File name",
 										type: "string",
-										expression: "optional"
+										expression: "optional",
+										show: function (e) {return (e.props.fileFormat || 'XLSX') == 'XLSX';}
+
 									},
 									dataAddress: {
 										type: "string",
 										ref: "props.ObjdataAddress",
 										label: "Data Location Cell ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ \r\nSets the location in the template where the Data will be inserted,\r\nUse a Valid Excel Address, for Example 'Sheet1!A2'",
-										expression: "optional"
+										expression: "optional",
+										show: function (e) {return (e.props.fileFormat || 'XLSX') == 'XLSX';}
 									},
 									selAddress: {
 										type: "string",
 										ref: "props.ObjselAddress",
 										label: "Selections Location Cell ⠀⠀⠀⠀⠀⠀⠀\r\nSets the location in the template where the Selections will be inserted,\r\nUse a Valid Excel Address, for Example 'Sheet1!A1'",
-										expression: "optional"
+										expression: "optional",
+										show: function (e) {return (e.props.fileFormat || 'XLSX') == 'XLSX';}
 									},
 								},
 								show: function(e) {
@@ -195,7 +217,7 @@ define(["underscore", "ng!$q", "ng!$http","qlik","qvangular"], function(_, $q, $
 								ref: "props.cycleFieldInterval",
 								defaultValue: 5000,
 								show: function(e) {
-									return e.props.cycleField != '' && !e.props.multiObjects;
+									return e.props.cycleField != '' && !e.props.multiObjects && (e.props.fileFormat || 'XLSX') == 'XLSX';
 								}
 							},
 							cycleTo: {
@@ -205,7 +227,7 @@ define(["underscore", "ng!$q", "ng!$http","qlik","qvangular"], function(_, $q, $
 								ref: "props.cycleTo",
 								defaultValue: false,
 								show: function(e) {
-									return e.props.cycleField != '' || e.props.multiObjects;
+									return (e.props.fileFormat || 'XLSX') == 'XLSX' && (e.props.cycleField != '' || e.props.multiObjects);
 								},
 								defaultValue: "Sheets",
 								options: [{
@@ -220,7 +242,7 @@ define(["underscore", "ng!$q", "ng!$http","qlik","qvangular"], function(_, $q, $
                         type: "items",
                         label: "Sheet formatting",						
 						show: function(e) {
-							return !e.props.useTemplate;
+							return !e.props.useTemplate && (e.props.fileFormat || 'XLSX') == 'XLSX';
 						},
 						items: {
 						    customSheetName: {
@@ -341,7 +363,7 @@ define(["underscore", "ng!$q", "ng!$http","qlik","qvangular"], function(_, $q, $
                         type: "items",
                         label: "Column header formatting⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\nCustomize Specific Columns Style, Format, Width, Colors etc.",
                         show: function(e) {
-							return !e.props.useTemplate;
+							return !e.props.useTemplate && (e.props.fileFormat || 'XLSX') == 'XLSX';
 						},
 						items: {
 							boldHeaders: {
@@ -429,7 +451,7 @@ define(["underscore", "ng!$q", "ng!$http","qlik","qvangular"], function(_, $q, $
                         type: "items",
                         label: "Column formatting",
                         show: function(e) {
-							return !e.props.useTemplate;
+							return !e.props.useTemplate && (e.props.fileFormat || 'XLSX') == 'XLSX';
 						},
 						items: {
 							ColumnsOptions: {
@@ -620,19 +642,19 @@ define(["underscore", "ng!$q", "ng!$http","qlik","qvangular"], function(_, $q, $
                         items: {
                             manipulteJS : {
                                 ref: "props.manipulteJS",
-                                label: "API⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n Customize your export using Excel JS API, for example \r\n=\'(\"Total Individual Claims\").range(15, 1, 15, 1).value(\"$(=GetFieldSelections([Vehicle Make])));\'\" \r\nsee snippets and examples in our website - https://logiexport.logsys.co.il/documentation",
+                                label: "API⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\nCustomize your export using Excel JS API, for example \r\n=\'(\"Total Individual Claims\").range(15, 1, 15, 1).value(\"$(=GetFieldSelections([Vehicle Make])));\'\" \r\nsee snippets and examples in our website - https://logiexport.logsys.co.il/documentation",
                                 type: "string",
 								expression: "optional"
                             },
 							manipulteJSBeforeStyle : {
                                 ref: "props.manipulteJSBeforeStyle",
-                                label: "API Before Styling⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n Customize your export using Excel JS API, for example \r\n=\'(\"Total Individual Claims\").range(15, 1, 15, 1).value(\"$(=GetFieldSelections([Vehicle Make])));\'\" \r\nsee snippets and examples in our website - https://logiexport.logsys.co.il/documentation",
+                                label: "API Before Styling⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\nCustomize your export using Excel JS API, for example \r\n=\'(\"Total Individual Claims\").range(15, 1, 15, 1).value(\"$(=GetFieldSelections([Vehicle Make])));\'\" \r\nsee snippets and examples in our website - https://logiexport.logsys.co.il/documentation",
                                 type: "string",
 								expression: "optional"
                             },
 							debugMode : {
                                 ref: "props.debugMode",
-                                label: "Debug Mode⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n Check if you wants to send bugs and performance reports to the dev team",
+                                label: "Debug Mode⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\nCheck if you wants to send bugs and performance reports to the dev team",
                                 type: "boolean",
 								defaultValue: true
                             }
