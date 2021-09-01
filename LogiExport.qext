@@ -2,7 +2,7 @@
     "name": "LogiExport",
     "description": "Advanced Export to Excel",
     "type": "visualization",
-    "version": "2.2.0",
+    "version": "5.1.0",
     "icon": "high-resolution",
     "author": "Yossi Rosset @ Logical BI",
     "homepage": "www.logsys.co.il",
