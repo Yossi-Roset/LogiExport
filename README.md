@@ -2,7 +2,7 @@
 LogiExport is a Qlik Sense extension easily added into existing dashboards, saving users time and effort designing and editing raw exported Excel files, avoiding potential user errors in the process.
 
 New Feature in LogiExport 5.1!<br>
-⚡Add "Copy Full Table" in Qlik's Context Menu, for every Vizualization (except pivot table - for now).
+⚡Add "Copy Full Table" in Qlik's Context Menu, for every Vizualization (except pivot table - for now).<br>
 ⚡Export to CSV, bypass the 1 million rows Excel export limit.
  
 
