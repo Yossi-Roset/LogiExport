@@ -25,14 +25,15 @@ Data context included – embed your selections, variables etc. in the file.
 
 **Getting Started with LogiExport in SaaS**
 
-- In the Management Console, go to the Extensions section and click Add in the upper right-hand corner.
-- In the pop-up, click Browse to select an extension file, or drop a file in the designated area.
-- Click Upload.
-- In the Management Console, go to the Content Security Policy section and Click Add in the upper right-hand corner.
-- In the dialog, set the Name to "LogiExport"
-- set the Origin to "prod.logsys.co.il"
-- check the following Directives: connect-src, object-src, script-src.
-- Click Add.
+1. In the Management Console, go to the Extensions section and click Add in the upper right-hand corner.
+2. In the pop-up, click Browse to select an extension file, or drop a file in the designated area.
+3. Click Upload.
+4. In the Management Console, go to the Content Security Policy section and Click Add in the upper right-hand corner.
+5. In the dialog, set the Name to "LogiExport"
+6. set the Origin to "prod.logsys.co.il"
+6. check the following Directives: connect-src, object-src, script-src, font-src, style-src.
+7. Click Add.
+8. Repeat the steps 4 - 7 for this Origin "cdnjs.cloudflare.com"
 
 
 
