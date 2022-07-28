@@ -33,7 +33,7 @@ Data context included – embed your selections, variables etc. in the file.
 6. set the Origin to "prod.logsys.co.il"
 6. check the following Directives: connect-src, object-src, script-src, font-src, style-src.
 7. Click Add.
-8. Repeat the steps 4 - 7 for this Origin "cdnjs.cloudflare.com"
+8. For the "Snap To" feature to work, repeat the steps 4 - 7 for this Origin "cdnjs.cloudflare.com" (this is needed for Font Awsome)
 
 
 
