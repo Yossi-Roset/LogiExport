@@ -1,30 +1,30 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
 
 .logiExportButton {
-	cursor: pointer; 
-	font-family: Arial, Helvetica;
-	font-size: 16px;
-	background: #fff;
-	color: #000;
-	display: inline;
-	text-decoration: none;
-	line-height: 17px;
-	border-top-width: 0px;
-    border-right-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 0px;
-    height: calc(100% - 6px);
-    width: calc(100% - 6px);
-    margin: 3px;
+  cursor: pointer;
+  font-family: Arial, Helvetica;
+  font-size: 16px;
+  background: #fff;
+  color: #000;
+  display: inline;
+  text-decoration: none;
+  line-height: 17px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  height: calc(100% - 6px);
+  width: calc(100% - 6px);
+  margin: 3px;
 }
 
-
 .normal-border {
-  --borderWidth: 3px;
+  --borderWidth: 5px;
   position: relative;
   border-radius: var(--borderWidth);
 }
 .normal-border:after {
-  content: '';
+  content: "";
   position: absolute;
   top: calc(-1 * var(--borderWidth));
   left: calc(-1 * var(--borderWidth));
@@ -36,52 +36,102 @@
   background-size: 300% 300%;
 }
 
-
 .gradient-border {
   --borderWidth: 3px;
   position: relative;
   border-radius: var(--borderWidth);
-  cursor: wait; 
+  cursor: wait;
 }
 .gradient-border:after {
-  content: '';
+  content: "";
   position: absolute;
   top: calc(-1 * var(--borderWidth));
   left: calc(-1 * var(--borderWidth));
   height: calc(100% + var(--borderWidth) * 2);
   width: calc(100% + var(--borderWidth) * 2);
-  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
   border-radius: calc(2 * var(--borderWidth));
   z-index: -1;
   -webkit-animation: animatedgradient 1s ease alternate infinite;
-          animation: animatedgradient 1s ease alternate infinite;
+  animation: animatedgradient 1s ease alternate infinite;
   background-size: 300% 300%;
 }
 
-
 @-webkit-keyframes animatedgradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
-
 
 @keyframes animatedgradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 
+
+
+article.snapped .logiExportBtn , article.snapped .qv-object-LogiExport {
+  margin: 0!important;
+  border-top-width:0!important;
+  border-bottom-width:0!important;
+  border-left-width:0!important;
+  border-right-width:0!important;
+  color:#595959;
+  box-shadow: none!important;
+  background-color: transparent!important;
+}
+
+article.snapped .logiExportBtn::before {
+ content: "\f1c3";
+  font-family: "Font Awesome 6 Free";
+  color: #009845;
+  font-size: 23px;
+}
+
+
+article.snapped .gradient-border:after, article.snapped .gradient-border {
+background:transparent;
+}
+
+
+article.snapped .logiExportBtn {
+  position: fixed;
+  z-index: 99999;
+}
+*/
+
+article.snapped .qv-inner-object {
+  overflow: visible;
+}
+
+article.snapped, article.snapped article.qv-object-LogiExport {
+border:0!important;
+}
+
+article.snapped  div.qv-inner-object {
+    background: transparent!important;
+}
