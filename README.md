@@ -42,7 +42,7 @@ Data context included – embed your selections, variables etc. in the file.
 7. Click Add.
 8. For the "Snap To" feature to work, repeat the steps 4 - 7 for this Origin "cdnjs.cloudflare.com" (this is needed for Font Awsome)
 
-
+See our YouTube channel: https://www.youtube.com/channel/UChF8JsMASw05joNHDMjbGpg 
 
 Documentation: https://logiexport.logsys.co.il/documentation/
 
