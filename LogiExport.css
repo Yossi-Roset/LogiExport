@@ -94,8 +94,9 @@
 
 
 
-article.snapped .logiExportBtn , article.snapped .qv-object-LogiExport {
-  margin: 0!important;
+.snapped .logiExportBtn , .snapped .qv-object-LogiExport {
+  /*margin: 0!important;*/
+  margin-top: -9px!important;
   border-top-width:0!important;
   border-bottom-width:0!important;
   border-left-width:0!important;
@@ -105,15 +106,23 @@ article.snapped .logiExportBtn , article.snapped .qv-object-LogiExport {
   background-color: transparent!important;
 }
 
-article.snapped .logiExportBtn::before {
+.snapped .logiExportBtn::before {
  content: "\f1c3";
   font-family: "Font Awesome 6 Free";
-  color: #009845;
-  font-size: 23px;
+  color: gray;
+  font-size: 16px;
+  opacity: 0.2;
 }
 
+.snapped .logiExportBtn:hover::before {
+ content: "\f1c3";
+  font-family: "Font Awesome 6 Free";
+  color: #009845;;
+  font-size: 16px;
+  opacity: 1;
+}
 
-article.snapped .gradient-border:after, article.snapped .gradient-border {
+.snapped .gradient-border:after, .snapped .gradient-border {
 background:transparent;
 }
 
@@ -122,16 +131,16 @@ article.snapped .logiExportBtn {
   position: fixed;
   z-index: 99999;
 }
-*/
 
-article.snapped .qv-inner-object {
+
+.snapped .qv-inner-object {
   overflow: visible;
 }
 
-article.snapped, article.snapped article.qv-object-LogiExport {
+.snapped, .snapped .qv-object-LogiExport {
 border:0!important;
 }
 
-article.snapped  div.qv-inner-object {
+.snapped  div.qv-inner-object {
     background: transparent!important;
 }
